@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 fun WeatherPage(viewModel: WeatherViewModel){
     var city by remember{ mutableStateOf("") }
     val weatherResult=viewModel.weatherResult.observeAsState()
+    val keyboardController = LocalSoftwareKeyboardController.current
     Column(
         modifier=Modifier.fillMaxWidth().padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -46,6 +47,7 @@ fun WeatherPage(viewModel: WeatherViewModel){
             )
             IconButton(onClick = {
                 viewModel.getData(city)
+                keyboardController?.hide()
             }) {
                 Icon(imageVector = Icons.Default.Search,
                     contentDescription = "Search for any location")
@@ -119,9 +121,21 @@ Text(text = data.location.country, fontSize = 18.sp, color = Color.Gray)
                 horizontalArrangement = Arrangement.SpaceAround
             ) {
                 WeatherKeyVal("Humidity",data.current.humidity)
-                WeatherKeyVal("Wind Speed",data.current.wind_kph)
+                WeatherKeyVal("Wind Speed",data.current.wind_kph+" km/h")
         }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                WeatherKeyVal("UV",data.current.uv)
+                WeatherKeyVal("Precipitation",data.current.precip_mm+"mm")
         }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                WeatherKeyVal("Local Time",data.location.localtime.split(" ")[1])
+                WeatherKeyVal("Local Date",data.location.localtime.split(" ")[0])
         }
         }
         }
