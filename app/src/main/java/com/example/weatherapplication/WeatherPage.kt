@@ -98,6 +98,11 @@ Text(text = data.location.country, fontSize = 18.sp, color = Color.Gray)
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Center
     )
+    AsyncImage(
+        modifier = Modifier.size(160.dp), 
+        model = "https:${data.current.condition.icon}".replace("64*64","128*128),
+        contentDescription = "Condition icon"
+)
 }
 
 
