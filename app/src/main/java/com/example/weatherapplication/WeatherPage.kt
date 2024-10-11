@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun WeatherPage(viewModel: WeatherViewModel){
     var city by remember{ mutableStateOf("") }
+    val weatherResult=viewModel.weatherResult.observeAsState()
     Column(
         modifier=Modifier.fillMaxWidth().padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -50,5 +51,56 @@ fun WeatherPage(viewModel: WeatherViewModel){
                     contentDescription = "Search for any location")
             }
         }
+      when (val result = weatherResult.value) {
+    is NetworkResponse.Error -> {
+        Text(text = result.message)
     }
+    is NetworkResponse.Loading -> {
+        CircularProgressIndicator()
+    }
+    is NetworkResponse.Success -> {
+       WeatherDetails(data = result.data)
+    }
+    null -> {}
+} 
+ }
+}
+
+
+
+
+
+Column(
+    modifier = Modifier
+        .fillMaxWidth()
+        .padding(vertical = 8.dp),
+    horizontalAlignment = Alignment.CenterHorizontally
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.Bottom
+    ) {
+       Icon(
+    imageVector = Icons.Default.LocationOn,
+    contentDescription = "Location icon",
+    modifier = Modifier.size(40.dp)
+)
+
+Text(text = data.location.name, fontSize = 30.sp)
+Spacer(modifier = Modifier.width(8.dp))
+Text(text = data.location.country, fontSize = 18.sp, color = Color.Gray)
+    }
+    Spacer(modifier = Modifier.height(16.dp))
+
+Text(
+    text = data.current.condition.text,
+    fontSize = 20.sp,
+    textAlign = TextAlign.Center,
+    color = Color.Gray
+)
+
+
+
+}
 }
