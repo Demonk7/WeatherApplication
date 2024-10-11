@@ -103,6 +103,38 @@ Text(text = data.location.country, fontSize = 18.sp, color = Color.Gray)
         model = "https:${data.current.condition.icon}".replace("64*64","128*128),
         contentDescription = "Condition icon"
 )
+    Text(
+        text = data.current.condition.text,
+        fontSize = 20.sp,
+        textAlign = TextAlign.Center,
+        color = Color.Gray
+    )
+    Spacer(modifier = Modifier.height(16.dp))
+    Card { 
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceAround
+            ) {
+                WeatherKeyVal("Humidity",data.current.humidity)
+                WeatherKeyVal("Wind Speed",data.current.wind_kph)
+        }
+        }
+        }
+        }
+        }
+
+@Composable
+fun WeatherKeyVal(key : String, value : String) {
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) { 
+        Text(text = value, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Text(text = key, fontWeight = FontWeight.SemiBold, color = Color.Gray)
+    }
 }
 
 
