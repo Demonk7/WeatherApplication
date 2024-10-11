@@ -91,16 +91,14 @@ Text(text = data.location.name, fontSize = 30.sp)
 Spacer(modifier = Modifier.width(8.dp))
 Text(text = data.location.country, fontSize = 18.sp, color = Color.Gray)
     }
-    Spacer(modifier = Modifier.height(16.dp))
-
-Text(
-    text = data.current.condition.text,
-    fontSize = 20.sp,
-    textAlign = TextAlign.Center,
-    color = Color.Gray
-)
-
-
-
+    Spacer (modifier = Modifier.height(16.dp))
+    Text(
+        text = "${data.current.temp_c} °c",
+        fontSize = 56.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center
+    )
 }
-}
+
+
+
