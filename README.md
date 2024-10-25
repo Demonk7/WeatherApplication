@@ -16,6 +16,29 @@ This is a weather application developed in Android Studio using Kotlin. It provi
 <li>API Integration: Retrofit for HTTP requests</li>
 <li>Data Parsing: Gson for JSON parsing</li>
 </ul>
+<h1>Folder Structure 📁</h1>
+📦WeatherApplication<br>
+ ┣ 📂app<br>
+ ┃ ┣ 📂src<br>
+ ┃ ┃ ┣ 📂main<br>
+ ┃ ┃ ┃ ┣ 📂java/com/example/weatherapplication<br>
+ ┃ ┃ ┃ ┃ ┣ WeatherViewModel.kt<br>
+ ┃ ┃ ┃ ┃ ┣ RetrofitInstance.kt<br>
+ ┃ ┃ ┃ ┃ ┣ WeatherPage.kt<br>
+ ┃ ┃ ┃ ┃ ┣ MainActivity.kt<br>
+ ┃ ┃ ┃ ┃ ┣ 📂api<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ Condition.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ Constant.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ Current.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ Location.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ NetworkResponse.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ WeatherApi.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ WeatherModel.kt<br>
+ ┃ ┃ ┃ ┃ ┣ 📂ui<br>
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂theme<br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Color.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Theme.kt<br>
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ Type.kt<br>
 <h1>Setup Instructions ⚙️</h1>
 <h2>Prerequisites</h2>
 <ul>
